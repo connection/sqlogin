@@ -24,8 +24,8 @@ agent = Mechanize.new
 agent.user_agent_alias = "Windows Mozilla"
 page = agent.get("http://#{site}")
 
-puts "Bruteforce started"
-puts
+puts "Login Bypass started\n"
+
 login_form = page.forms[0]
 wq = WorkQueue.new(25,10)
 File.open("bypassList.txt").each_line.each do |bypass|
