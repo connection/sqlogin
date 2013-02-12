@@ -34,10 +34,12 @@ File.open("bypassList.txt").each_line.each do |bypass|
 		login_form.field[1] = bypass
 		page = agent.submit(login_form, login_form.buttons.first)
 
-		if page.response.status = "200"
-			puts "[+] Bypass Successful With #{bypass}"
-			success = 1
-			exit
+		if page.response.status =~ /(30.|200)/
+			if page.uri =~ /#{site}/
+			else
+				puts "[+] Bypass Successful With #{bypass}"
+				success = 1
+			end
 		end
 	}
 	wq.join
